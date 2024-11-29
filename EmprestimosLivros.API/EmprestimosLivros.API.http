@@ -1,0 +1,6 @@
+@EmprestimosLivros.API_HostAddress = http://localhost:5118
+
+GET {{EmprestimosLivros.API_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###

@@ -1,0 +1,49 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.11.35312.102
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EmprestimosLivrosNovo.Domain", "EmprestimosLivrosNovo.Domain\EmprestimosLivrosNovo.Domain.csproj", "{E322A138-09CF-4179-A1B6-813C682825DC}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EmprestimosLivrosNovo.Infra.Data", "EmprestimosLivrosNovo.Infra.Data\EmprestimosLivrosNovo.Infra.Data.csproj", "{327B1B14-B313-4070-971D-3183AA5A72E0}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EmprestimosLivrosNovo.Ioc", "EmprestimosLivrosNovo.Ioc\EmprestimosLivrosNovo.Ioc.csproj", "{4A9C3753-941E-44F6-A850-8BA7D301FA94}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EmprestimosLivrosNovo.Application", "EmprestimosLivrosNovo.Application\EmprestimosLivrosNovo.Application.csproj", "{23295AAA-9A9C-4D55-A5FA-AAEA0ED37411}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EmprestimosLivros.API", "EmprestimosLivros.API\EmprestimosLivros.API.csproj", "{771C614C-A525-41FD-98E1-252F1E977128}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{E322A138-09CF-4179-A1B6-813C682825DC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E322A138-09CF-4179-A1B6-813C682825DC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E322A138-09CF-4179-A1B6-813C682825DC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E322A138-09CF-4179-A1B6-813C682825DC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{327B1B14-B313-4070-971D-3183AA5A72E0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{327B1B14-B313-4070-971D-3183AA5A72E0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{327B1B14-B313-4070-971D-3183AA5A72E0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{327B1B14-B313-4070-971D-3183AA5A72E0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4A9C3753-941E-44F6-A850-8BA7D301FA94}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4A9C3753-941E-44F6-A850-8BA7D301FA94}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4A9C3753-941E-44F6-A850-8BA7D301FA94}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4A9C3753-941E-44F6-A850-8BA7D301FA94}.Release|Any CPU.Build.0 = Release|Any CPU
+		{23295AAA-9A9C-4D55-A5FA-AAEA0ED37411}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{23295AAA-9A9C-4D55-A5FA-AAEA0ED37411}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{23295AAA-9A9C-4D55-A5FA-AAEA0ED37411}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{23295AAA-9A9C-4D55-A5FA-AAEA0ED37411}.Release|Any CPU.Build.0 = Release|Any CPU
+		{771C614C-A525-41FD-98E1-252F1E977128}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{771C614C-A525-41FD-98E1-252F1E977128}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{771C614C-A525-41FD-98E1-252F1E977128}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{771C614C-A525-41FD-98E1-252F1E977128}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {1A542B99-DDA1-4FAE-A2D0-A14835290B63}
+	EndGlobalSection
+EndGlobal
