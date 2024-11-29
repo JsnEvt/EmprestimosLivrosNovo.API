@@ -1,5 +1,6 @@
 ﻿using EmprestimosLivros.API.Interfaces;
 using EmprestimosLivros.API.Models;
+using Microsoft.EntityFrameworkCore;
 
 namespace EmprestimosLivros.API.Repositories
 {
@@ -14,27 +15,32 @@ namespace EmprestimosLivros.API.Repositories
 
         public void Alterar(Cliente cliente)
         {
-            throw new NotImplementedException();
+            _context.Entry(cliente).State = EntityState.Modified;
         }
 
-        public void Excluir(int id)
+        public void Excluir(Cliente cliente)
         {
-            throw new NotImplementedException();
+            _context.Cliente.Remove(cliente);
         }
 
         public void Incluir(Cliente cliente)
         {
-            throw new NotImplementedException();
+            _context.Cliente.Add(cliente);
         }
 
-        public Task<Cliente> SelecionarPorId(int id)
-        {
-            throw new NotImplementedException();
+        public async Task<bool> SaveAllAsync()
+        {   
+            return await _context.SaveChangesAsync() > 0;
         }
 
-        public Task<IEnumerable<Cliente>> SelectionarTodos()
+        public async Task<Cliente> SelecionarPorId(int id)
         {
-            throw new NotImplementedException();
+            return await _context.Cliente.Where(x => x.Id == id).FirstOrDefaultAsync();
+        }
+
+        public async Task<IEnumerable<Cliente>> SelectionarTodos()
+        {
+            return await _context.Cliente.ToListAsync();
         }
     }
 }
