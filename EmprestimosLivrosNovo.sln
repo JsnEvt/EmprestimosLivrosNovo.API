@@ -3,15 +3,15 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.11.35312.102
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EmprestimosLivrosNovo.Domain", "EmprestimosLivrosNovo.Domain\EmprestimosLivrosNovo.Domain.csproj", "{E322A138-09CF-4179-A1B6-813C682825DC}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EmprestimosLivrosNovo.Domain", "EmprestimosLivrosNovo.Domain\EmprestimosLivrosNovo.Domain.csproj", "{E322A138-09CF-4179-A1B6-813C682825DC}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EmprestimosLivrosNovo.Infra.Data", "EmprestimosLivrosNovo.Infra.Data\EmprestimosLivrosNovo.Infra.Data.csproj", "{327B1B14-B313-4070-971D-3183AA5A72E0}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EmprestimosLivrosNovo.Infra.Data", "EmprestimosLivrosNovo.Infra.Data\EmprestimosLivrosNovo.Infra.Data.csproj", "{327B1B14-B313-4070-971D-3183AA5A72E0}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EmprestimosLivrosNovo.Ioc", "EmprestimosLivrosNovo.Ioc\EmprestimosLivrosNovo.Ioc.csproj", "{4A9C3753-941E-44F6-A850-8BA7D301FA94}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EmprestimosLivrosNovo.Infra.Ioc", "EmprestimosLivrosNovo.Ioc\EmprestimosLivrosNovo.Infra.Ioc.csproj", "{4A9C3753-941E-44F6-A850-8BA7D301FA94}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EmprestimosLivrosNovo.Application", "EmprestimosLivrosNovo.Application\EmprestimosLivrosNovo.Application.csproj", "{23295AAA-9A9C-4D55-A5FA-AAEA0ED37411}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EmprestimosLivrosNovo.Application", "EmprestimosLivrosNovo.Application\EmprestimosLivrosNovo.Application.csproj", "{23295AAA-9A9C-4D55-A5FA-AAEA0ED37411}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EmprestimosLivros.API", "EmprestimosLivros.API\EmprestimosLivros.API.csproj", "{771C614C-A525-41FD-98E1-252F1E977128}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EmprestimosLivros.API", "EmprestimosLivros.API\EmprestimosLivros.API.csproj", "{771C614C-A525-41FD-98E1-252F1E977128}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

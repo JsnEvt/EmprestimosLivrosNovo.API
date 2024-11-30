@@ -7,14 +7,9 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\EmprestimosLivrosNovo.Application\EmprestimosLivrosNovo.Application.csproj" />
     <ProjectReference Include="..\EmprestimosLivrosNovo.Domain\EmprestimosLivrosNovo.Domain.csproj" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <Folder Include="Context\" />
-    <Folder Include="EntitesConfigurations\" />
-    <Folder Include="Migrations\" />
-    <Folder Include="Repositories\" />
+    <ProjectReference Include="..\EmprestimosLivrosNovo.Infra.Data\EmprestimosLivrosNovo.Infra.Data.csproj" />
   </ItemGroup>
 
 </Project>
