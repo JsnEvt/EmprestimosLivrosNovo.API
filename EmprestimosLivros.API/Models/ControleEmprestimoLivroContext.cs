@@ -23,13 +23,6 @@ public partial class ControleEmprestimoLivroContext : DbContext
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
-        modelBuilder.Entity<Cliente>(entity =>
-        {
-            entity.Property(e => e.Numero).IsFixedLength();
-            entity.Property(e => e.TelefoneCelular).IsFixedLength();
-            entity.Property(e => e.TelefoneFixo).IsFixedLength();
-        });
-
         modelBuilder.Entity<Emprestimo>(entity =>
         {
             entity.Property(e => e.Id).ValueGeneratedNever();
