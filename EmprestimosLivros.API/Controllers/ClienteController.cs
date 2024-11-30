@@ -23,12 +23,15 @@ namespace EmprestimosLivros.API.Controllers
         [HttpGet()]
         public async Task<ActionResult<IEnumerable<Cliente>>> GetClientes()
         {
-            return Ok(await _clienteRepository.SelectionarTodos());
+            var clientes = await _clienteRepository.SelectionarTodos();
+            var clientesDTO = _mapper.Map<IEnumerable<ClienteDTO>>( clientes );
+            return Ok(clientesDTO);
         }
 
         [HttpPost]
-        public async Task<ActionResult> CadastrarCliente(Cliente cliente)
+        public async Task<ActionResult> CadastrarCliente(ClienteDTO clienteDTO)
         {
+            var cliente = _mapper.Map<Cliente>(clienteDTO);
             _clienteRepository.Incluir(cliente);
             if (await _clienteRepository.SaveAllAsync())
             {
@@ -38,8 +41,20 @@ namespace EmprestimosLivros.API.Controllers
         }
 
         [HttpPut]
-        public async Task<ActionResult> AlterarCliente(Cliente cliente)
+        public async Task<ActionResult> AlterarCliente(ClienteDTO clienteDTO)
         {
+            if(clienteDTO.Id == 0)
+            {
+                return BadRequest("Informe o id.");
+            }
+
+            var clienteExiste = await _clienteRepository.SelecionarPorId(clienteDTO.Id);
+            if (clienteExiste == null)
+            {
+                return NotFound("Cliente não encontrado.");
+            }
+
+            var cliente = _mapper.Map<Cliente>(clienteDTO);
             _clienteRepository.Alterar(cliente);
             if (await _clienteRepository.SaveAllAsync())
             {
