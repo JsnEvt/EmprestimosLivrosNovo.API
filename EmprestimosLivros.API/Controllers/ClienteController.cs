@@ -1,4 +1,6 @@
-﻿using EmprestimosLivros.API.Interfaces;
+﻿using AutoMapper;
+using EmprestimosLivros.API.DTOs;
+using EmprestimosLivros.API.Interfaces;
 using EmprestimosLivros.API.Models;
 using EmprestimosLivros.API.Repositories;
 using Microsoft.AspNetCore.Mvc;
@@ -9,11 +11,13 @@ namespace EmprestimosLivros.API.Controllers
     [Route("api/[controller]")]
     public class ClienteController : Controller
     {
-        public readonly IClienteRepository _clienteRepository;
+        private readonly IClienteRepository _clienteRepository;
+        private readonly IMapper _mapper;
 
-        public ClienteController(IClienteRepository clienteRepository)
+        public ClienteController(IClienteRepository clienteRepository, IMapper mapper )
         {
             _clienteRepository = clienteRepository;
+            _mapper = mapper;
         }
 
         [HttpGet()]
@@ -70,7 +74,10 @@ namespace EmprestimosLivros.API.Controllers
             {
                 return NotFound("Cliente não encontrado");
             }
-            return Ok(cliente);
+
+            var clienteDTO = _mapper.Map<ClienteDTO>(cliente);
+
+            return Ok(clienteDTO);
         }
     }
 }

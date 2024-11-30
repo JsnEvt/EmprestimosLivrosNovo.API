@@ -1,4 +1,5 @@
 using EmprestimosLivros.API.Interfaces;
+using EmprestimosLivros.API.Mappings;
 using EmprestimosLivros.API.Models;
 using EmprestimosLivros.API.Repositories;
 using Microsoft.EntityFrameworkCore;
@@ -16,6 +17,7 @@ builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
 builder.Services.AddScoped<IClienteRepository, ClienteRepository>();
+builder.Services.AddAutoMapper(typeof(EntitiesToDTOMappingProfile));
 
 var app = builder.Build();
 
