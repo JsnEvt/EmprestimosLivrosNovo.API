@@ -1,4 +1,4 @@
-﻿using EmprestimosLivros.API.Models;
+﻿using EmprestimosLivrosNovo.Domain.Entities;
 
 namespace EmprestimosLivros.API.Interfaces
 {

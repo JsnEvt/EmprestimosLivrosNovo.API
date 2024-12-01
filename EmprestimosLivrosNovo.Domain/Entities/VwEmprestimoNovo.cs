@@ -6,7 +6,7 @@ using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using Microsoft.EntityFrameworkCore;
 
-namespace EmprestimosLivros.API.Models;
+namespace EmprestimosLivrosNovo.Domain.Entities;
 
 [Keyless]
 public partial class VwEmprestimoNovo

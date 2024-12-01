@@ -1,8 +1,8 @@
-﻿using EmprestimosLivros.API.Interfaces;
-using EmprestimosLivros.API.Models;
+﻿using EmprestimosLivrosNovo.Domain.Entities;
+using EmprestimosLivrosNovo.Infra.Data.Context;
 using Microsoft.EntityFrameworkCore;
 
-namespace EmprestimosLivros.API.Repositories
+namespace EmprestimosLivrosNovo.Infra.Data
 {
     public class ClienteRepository : IClienteRepository
     {

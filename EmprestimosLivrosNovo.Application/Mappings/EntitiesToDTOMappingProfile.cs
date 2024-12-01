@@ -1,6 +1,7 @@
 ﻿using AutoMapper;
-using EmprestimosLivros.API.DTOs;
-using EmprestimosLivros.API.Models;
+using EmprestimosLivrosNovo.Application.DTOs;
+using EmprestimosLivrosNovo.Domain.Entities;
+
 
 namespace EmprestimosLivros.API.Mappings
 {

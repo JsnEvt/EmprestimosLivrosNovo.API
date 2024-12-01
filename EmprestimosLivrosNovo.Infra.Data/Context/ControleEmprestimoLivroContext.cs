@@ -2,9 +2,10 @@
 #nullable disable
 using System;
 using System.Collections.Generic;
+using EmprestimosLivrosNovo.Domain.Entities;
 using Microsoft.EntityFrameworkCore;
 
-namespace EmprestimosLivros.API.Models;
+namespace EmprestimosLivrosNovo.Infra.Data.Context;
 
 public partial class ControleEmprestimoLivroContext : DbContext
 {
