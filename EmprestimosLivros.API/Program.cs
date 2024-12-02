@@ -3,6 +3,7 @@ using EmprestimosLivrosNovo.Infra.Data.Context;
 using EmprestimosLivrosNovo.Application.Interfaces;
 using Microsoft.EntityFrameworkCore;
 using EmprestimosLivrosNovo.Application.Mappings;
+using EmprestimosLivrosNovo.Infra.Ioc;
 
 
 
@@ -16,7 +17,8 @@ builder.Services.AddDbContext<ControleEmprestimoLivroContext>(options => {
 builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
-builder.Services.AddSwaggerGen();
+builder.Services.AddInfrastructureSwagger();
+//builder.Services.AddSwaggerGen();
 
 builder.Services.AddScoped<IClienteRepository, ClienteRepository>();
 builder.Services.AddAutoMapper(typeof(EntitiesToDTOMappingProfile));
