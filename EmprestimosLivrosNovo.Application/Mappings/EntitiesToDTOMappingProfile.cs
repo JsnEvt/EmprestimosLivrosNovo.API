@@ -3,7 +3,7 @@ using EmprestimosLivrosNovo.Application.DTOs;
 using EmprestimosLivrosNovo.Domain.Entities;
 
 
-namespace EmprestimosLivros.API.Mappings
+namespace EmprestimosLivrosNovo.Application.Mappings
 {
     public class EntitiesToDTOMappingProfile : Profile
     {

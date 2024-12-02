@@ -1,8 +1,10 @@
-using EmprestimosLivros.API.Interfaces;
-using EmprestimosLivros.API.Mappings;
-using EmprestimosLivros.API.Models;
-using EmprestimosLivros.API.Repositories;
+using EmprestimosLivrosNovo.Infra.Data;
+using EmprestimosLivrosNovo.Infra.Data.Context;
+using EmprestimosLivrosNovo.Application.Interfaces;
 using Microsoft.EntityFrameworkCore;
+using EmprestimosLivrosNovo.Application.Mappings;
+
+
 
 var builder = WebApplication.CreateBuilder(args);
 

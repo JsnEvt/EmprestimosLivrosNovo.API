@@ -1,4 +1,5 @@
-﻿using EmprestimosLivrosNovo.Domain.Entities;
+﻿using EmprestimosLivrosNovo.Application.Interfaces;
+using EmprestimosLivrosNovo.Domain.Entities;
 using EmprestimosLivrosNovo.Infra.Data.Context;
 using Microsoft.EntityFrameworkCore;
 
