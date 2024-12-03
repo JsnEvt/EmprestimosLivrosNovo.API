@@ -5,19 +5,15 @@ using System.Collections.Generic;
 
 namespace EmprestimosLivrosNovo.Domain.Entities;
 
-public partial class Livro
+public partial class Usuario
 {
     public int Id { get; set; }
 
     public string Nome { get; set; }
 
-    public string Autor { get; set; }
+    public string Email { get; set; }
 
-    public string Editora { get; set; }
+    public byte[] PasswordHash { get; set; }
 
-    public DateTime AnoPublicacao { get; set; }
-
-    public string Edicao { get; set; }
-
-    public virtual ICollection<Emprestimo> Emprestimo { get; set; } = new List<Emprestimo>();
+    public byte[] PasswordSalt { get; set; }
 }

@@ -1,5 +1,4 @@
 using EmprestimosLivrosNovo.Infra.Data;
-using EmprestimosLivrosNovo.Infra.Data.Context;
 using Microsoft.EntityFrameworkCore;
 using EmprestimosLivrosNovo.Application.Mappings;
 using EmprestimosLivrosNovo.Infra.Ioc;
@@ -10,8 +9,6 @@ using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.Extensions.Configuration;
 using Microsoft.IdentityModel.Tokens;
 using System.Text;
-
-
 
 
 var builder = WebApplication.CreateBuilder(args);

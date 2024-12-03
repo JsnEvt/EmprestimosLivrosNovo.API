@@ -1,6 +1,5 @@
 ﻿using EmprestimosLivrosNovo.Domain.Entities;
 using EmprestimosLivrosNovo.Domain.Interfaces;
-using EmprestimosLivrosNovo.Infra.Data.Context;
 using Microsoft.EntityFrameworkCore;
 
 namespace EmprestimosLivrosNovo.Infra.Data
