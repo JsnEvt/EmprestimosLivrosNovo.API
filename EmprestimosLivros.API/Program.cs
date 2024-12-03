@@ -1,9 +1,12 @@
 using EmprestimosLivrosNovo.Infra.Data;
 using EmprestimosLivrosNovo.Infra.Data.Context;
-using EmprestimosLivrosNovo.Application.Interfaces;
 using Microsoft.EntityFrameworkCore;
 using EmprestimosLivrosNovo.Application.Mappings;
 using EmprestimosLivrosNovo.Infra.Ioc;
+using EmprestimosLivrosNovo.Application.Interfaces;
+using EmprestimosLivrosNovo.Application.Services;
+using EmprestimosLivrosNovo.Domain.Interfaces;
+
 
 
 
@@ -20,7 +23,11 @@ builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddInfrastructureSwagger();
 //builder.Services.AddSwaggerGen();
 
+builder.Services.AddScoped<IClienteService, ClienteService>();
+
 builder.Services.AddScoped<IClienteRepository, ClienteRepository>();
+
+
 builder.Services.AddAutoMapper(typeof(EntitiesToDTOMappingProfile));
 
 var app = builder.Build();

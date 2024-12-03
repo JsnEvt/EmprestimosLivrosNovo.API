@@ -1,5 +1,5 @@
-﻿using EmprestimosLivrosNovo.Application.Interfaces;
-using EmprestimosLivrosNovo.Domain.Entities;
+﻿using EmprestimosLivrosNovo.Domain.Entities;
+using EmprestimosLivrosNovo.Domain.Interfaces;
 using EmprestimosLivrosNovo.Infra.Data.Context;
 using Microsoft.EntityFrameworkCore;
 
@@ -14,32 +14,41 @@ namespace EmprestimosLivrosNovo.Infra.Data
             _context = context;
         }
 
-        public void Alterar(Cliente cliente)
+        public async Task<Cliente> Alterar(Cliente cliente)
         {
-            _context.Entry(cliente).State = EntityState.Modified;
+            _context.Cliente.Update(cliente);
+            await _context.SaveChangesAsync();
+            return cliente;
         }
 
-        public void Excluir(Cliente cliente)
+
+        public async Task<Cliente> Excluir(int id)
         {
-            _context.Cliente.Remove(cliente);
+            var cliente = await _context.Cliente.FindAsync(id);
+            if (cliente != null)
+            {
+                //cliente.Excluir();
+                _context.Cliente.Update(cliente);
+                await _context.SaveChangesAsync();
+                return cliente;
+            }
+
+            return null;
         }
 
-        public void Incluir(Cliente cliente)
+        public async Task<Cliente> Incluir(Cliente cliente)
         {
             _context.Cliente.Add(cliente);
+            await _context.SaveChangesAsync();
+            return cliente;
         }
 
-        public async Task<bool> SaveAllAsync()
-        {   
-            return await _context.SaveChangesAsync() > 0;
-        }
-
-        public async Task<Cliente> SelecionarPorId(int id)
+        public async Task<Cliente> SelecionarAsync(int id)
         {
             return await _context.Cliente.Where(x => x.Id == id).FirstOrDefaultAsync();
         }
 
-        public async Task<IEnumerable<Cliente>> SelectionarTodos()
+        public async Task<IEnumerable<Cliente>> SelecionarTodosAsync()
         {
             return await _context.Cliente.ToListAsync();
         }
