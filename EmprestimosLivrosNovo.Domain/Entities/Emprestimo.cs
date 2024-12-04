@@ -2,38 +2,24 @@
 #nullable disable
 using System;
 using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
-using System.ComponentModel.DataAnnotations.Schema;
-using Microsoft.EntityFrameworkCore;
 
-namespace EmprestimosLivros.API.Models;
+namespace EmprestimosLivrosNovo.Domain.Entities;
 
 public partial class Emprestimo
 {
-    [Key]
-    [Column("id")]
     public int Id { get; set; }
 
-    [Column("idLivro")]
     public int? IdLivro { get; set; }
 
-    [Column("idCliente")]
     public int? IdCliente { get; set; }
 
-    [Column("dataEmprestimo", TypeName = "datetime")]
     public DateTime? DataEmprestimo { get; set; }
 
-    [Column("dataEntrega", TypeName = "datetime")]
     public DateTime? DataEntrega { get; set; }
 
-    [Column("entregue")]
     public bool? Entregue { get; set; }
 
-    [ForeignKey("IdCliente")]
-    [InverseProperty("Emprestimo")]
     public virtual Cliente IdClienteNavigation { get; set; }
 
-    [ForeignKey("IdLivro")]
-    [InverseProperty("Emprestimo")]
     public virtual Livro IdLivroNavigation { get; set; }
 }

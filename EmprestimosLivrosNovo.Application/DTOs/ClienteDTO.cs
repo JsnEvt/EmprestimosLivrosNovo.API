@@ -1,9 +1,8 @@
-﻿using EmprestimosLivros.API.Models;
-using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.EntityFrameworkCore;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.ComponentModel.DataAnnotations;
 
-namespace EmprestimosLivros.API.DTOs
+namespace EmprestimosLivrosNovo.Application.DTOs
 {
     public class ClienteDTO
     {
