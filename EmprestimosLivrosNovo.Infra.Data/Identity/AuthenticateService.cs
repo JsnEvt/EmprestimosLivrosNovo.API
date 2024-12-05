@@ -19,15 +19,12 @@ namespace EmprestimosLivrosNovo.Infra.Data.Identity
         private readonly ControleEmprestimoLivroContext _context;
         private readonly IConfiguration _configuration;
 
-<<<<<<< HEAD
         public AuthenticateService(ControleEmprestimoLivroContext context, IConfiguration configuration)
         {
             _context = context;
             _configuration = configuration;
         }
 
-=======
->>>>>>> dcda9d8e1ddfadb10d94a93e13fc0e9791649612
         public async Task<bool> AuthenticateAsync(string email, string senha)
         {
             var usuario = await _context.Usuario.Where(x => x.Email.ToLower() == email.ToLower()).FirstOrDefaultAsync();

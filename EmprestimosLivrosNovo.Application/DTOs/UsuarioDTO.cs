@@ -10,11 +10,7 @@ namespace EmprestimosLivrosNovo.Application.DTOs
 {
     public class UsuarioDTO
     {
-<<<<<<< HEAD
         public int Id { get; set; }
-=======
-        //public int Id { get; set; }
->>>>>>> dcda9d8e1ddfadb10d94a93e13fc0e9791649612
         [Required(ErrorMessage = "O nome é obrigatório")]
         [MaxLength(250, ErrorMessage = "O nome não pode ter mais de 250 caracteres")]
         public string Nome { get; set; }

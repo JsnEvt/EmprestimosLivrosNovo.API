@@ -10,10 +10,8 @@ namespace EmprestimosLivrosNovo.Application.Mappings
         public EntitiesToDTOMappingProfile()
         {
             CreateMap<Cliente, ClienteDTO>().ReverseMap();
-<<<<<<< HEAD
             CreateMap<Usuario, UsuarioDTO>().ReverseMap();
-=======
->>>>>>> dcda9d8e1ddfadb10d94a93e13fc0e9791649612
+
         }
     }
 }

@@ -1,10 +1,8 @@
 ﻿using EmprestimosLivros.API.Models;
 using EmprestimosLivrosNovo.Application.DTOs;
-<<<<<<< HEAD
 using EmprestimosLivrosNovo.Application.Interfaces;
 using EmprestimosLivrosNovo.Domain.Account;
-=======
->>>>>>> dcda9d8e1ddfadb10d94a93e13fc0e9791649612
+
 using Microsoft.AspNetCore.Mvc;
 
 namespace EmprestimosLivros.API.Controllers
@@ -13,7 +11,6 @@ namespace EmprestimosLivros.API.Controllers
     [Route("api/[controller]")]
     public class UsuarioController : Controller
     {
-<<<<<<< HEAD
         private readonly IAuthenticate _authenticateService;
         private readonly IUsuarioService _usuarioService;
 
@@ -51,12 +48,10 @@ namespace EmprestimosLivros.API.Controllers
         }
     }
 }
-=======
-        [HttpPost("register")]
-        public async Task<ActionResult<UserToken>> Incluir(UsuarioDTO usuarioDTO)
-        {
-            return View();
-        }
-    }
-}
->>>>>>> dcda9d8e1ddfadb10d94a93e13fc0e9791649612
+//        [HttpPost("register")]
+//        public async Task<ActionResult<UserToken>> Incluir(UsuarioDTO usuarioDTO)
+//        {
+//            return View();
+//        }
+//    }
+//}
