@@ -1,8 +1,5 @@
-﻿using AutoMapper;
-using EmprestimosLivros.API.DTOs;
-using EmprestimosLivros.API.Interfaces;
-using EmprestimosLivros.API.Models;
-using EmprestimosLivros.API.Repositories;
+﻿using EmprestimosLivrosNovo.Application.DTOs;
+using EmprestimosLivrosNovo.Application.Interfaces;
 using Microsoft.AspNetCore.Mvc;
 
 namespace EmprestimosLivros.API.Controllers
@@ -11,87 +8,61 @@ namespace EmprestimosLivros.API.Controllers
     [Route("api/[controller]")]
     public class ClienteController : Controller
     {
-        private readonly IClienteRepository _clienteRepository;
-        private readonly IMapper _mapper;
+        private readonly IClienteService _clienteService;
 
-        public ClienteController(IClienteRepository clienteRepository, IMapper mapper )
+        public ClienteController(IClienteService clienteService)
         {
-            _clienteRepository = clienteRepository;
-            _mapper = mapper;
-        }
-
-        [HttpGet()]
-        public async Task<ActionResult<IEnumerable<Cliente>>> GetClientes()
-        {
-            var clientes = await _clienteRepository.SelectionarTodos();
-            var clientesDTO = _mapper.Map<IEnumerable<ClienteDTO>>( clientes );
-            return Ok(clientesDTO);
+            _clienteService = clienteService;
         }
 
         [HttpPost]
-        public async Task<ActionResult> CadastrarCliente(ClienteDTO clienteDTO)
+        public async Task<ActionResult> Incluir(ClienteDTO clienteDTO)
         {
-            var cliente = _mapper.Map<Cliente>(clienteDTO);
-            _clienteRepository.Incluir(cliente);
-            if (await _clienteRepository.SaveAllAsync())
+            var clienteDTOIncluido = await _clienteService.Incluir(clienteDTO);  
+            if(clienteDTOIncluido == null)
             {
-                return Ok("Cliente cadastrado com sucesso!");
+                return BadRequest("Ocorreu um erro ao incluir o cliente");
             }
-            return BadRequest("Ocorreu um erro ao salvar o cliente.");
+            return Ok("Cliente incluído com sucesso");
         }
 
         [HttpPut]
-        public async Task<ActionResult> AlterarCliente(ClienteDTO clienteDTO)
+        public async Task<ActionResult> Alterar(ClienteDTO clienteDTO)
         {
-            if(clienteDTO.Id == 0)
+            var clienteDTOAlterado = await _clienteService.Alterar(clienteDTO);
+            if (clienteDTOAlterado == null)
             {
-                return BadRequest("Informe o id.");
+                return BadRequest("Ocorreu um erro ao alterar o cliente");
             }
-
-            var clienteExiste = await _clienteRepository.SelecionarPorId(clienteDTO.Id);
-            if (clienteExiste == null)
-            {
-                return NotFound("Cliente não encontrado.");
-            }
-
-            var cliente = _mapper.Map<Cliente>(clienteDTO);
-            _clienteRepository.Alterar(cliente);
-            if (await _clienteRepository.SaveAllAsync())
-            {
-                return Ok("Cliente alterado com sucesso!");
-            }
-            return BadRequest("Ocorreu um erro ao alterar o cliente.");
+            return Ok("Cliente alterado com sucesso");
         }
 
-        [HttpDelete("{id}")]
-        public async Task<ActionResult> ExcluirCliente(int id)
+        [HttpDelete]
+        public async Task<ActionResult> Excluir(int id)
         {
-            var cliente = await _clienteRepository.SelecionarPorId(id);
-
-            if (cliente == null)
+            var clienteDTOExcluido = await _clienteService.Excluir(id);
+            if (clienteDTOExcluido == null)
             {
-                return NotFound("Cliente não encontrado.");
+                return BadRequest("Ocorreu um erro ao excluir o cliente");
             }
-
-            _clienteRepository.Excluir(cliente);
-
-            if (await _clienteRepository.SaveAllAsync())
-            {
-                return Ok("Cliente excluído com sucesso");
-            }
-            return BadRequest("Ocorreu um erro ao excluir o cliente");
+            return Ok("Cliente excluído com sucesso");
         }
+
         [HttpGet("{id}")]
-        public async Task<ActionResult>SelecionarCliente(int id)
+        public async Task<ActionResult> Selecionar(int id)
         {
-            var cliente = await _clienteRepository.SelecionarPorId(id);
-            if(cliente == null)
+            var clienteDTO = await _clienteService.SelecionarAsync(id);
+            if (clienteDTO == null)
             {
-                return NotFound("Cliente não encontrado");
+                return NotFound("Cliente não encontrado.");
             }
+            return Ok(clienteDTO);
+        }
 
-            var clienteDTO = _mapper.Map<ClienteDTO>(cliente);
-
+        [HttpGet]
+        public async Task<ActionResult> SelecionarTodos()
+        {
+            var clienteDTO = await _clienteService.SelecionarTodosAsync();
             return Ok(clienteDTO);
         }
     }

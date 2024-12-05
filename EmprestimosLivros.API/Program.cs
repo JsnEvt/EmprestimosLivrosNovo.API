@@ -1,8 +1,15 @@
-using EmprestimosLivros.API.Interfaces;
-using EmprestimosLivros.API.Mappings;
-using EmprestimosLivros.API.Models;
-using EmprestimosLivros.API.Repositories;
+using EmprestimosLivrosNovo.Infra.Data;
 using Microsoft.EntityFrameworkCore;
+using EmprestimosLivrosNovo.Application.Mappings;
+using EmprestimosLivrosNovo.Infra.Ioc;
+using EmprestimosLivrosNovo.Application.Interfaces;
+using EmprestimosLivrosNovo.Application.Services;
+using EmprestimosLivrosNovo.Domain.Interfaces;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.Extensions.Configuration;
+using Microsoft.IdentityModel.Tokens;
+using System.Text;
+
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -11,12 +18,42 @@ builder.Services.AddDbContext<ControleEmprestimoLivroContext>(options => {
     options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection"));
 });
 
+builder.Services.AddAuthentication(opt =>
+{
+    opt.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
+    opt.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
+}).AddJwtBearer(options =>
+{
+    var jwtSettings = builder.Configuration.GetSection("jwt");
+    var issuer = jwtSettings["issuer"];
+    var audience = jwtSettings["audience"];
+    var signingKey = jwtSettings["secretkey"];
+
+    options.TokenValidationParameters = new Microsoft.IdentityModel.Tokens.TokenValidationParameters
+    {
+        ValidateIssuer = true,
+        ValidateAudience = true,
+        ValidateLifetime = true,
+        ValidateIssuerSigningKey = true,
+
+        ValidIssuer = issuer,
+        ValidAudience = audience,
+        IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(signingKey)),
+        ClockSkew = TimeSpan.Zero,
+    };
+});
+
 builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
-builder.Services.AddSwaggerGen();
+builder.Services.AddInfrastructureSwagger();
+//builder.Services.AddSwaggerGen();
+
+builder.Services.AddScoped<IClienteService, ClienteService>();
 
 builder.Services.AddScoped<IClienteRepository, ClienteRepository>();
+
+
 builder.Services.AddAutoMapper(typeof(EntitiesToDTOMappingProfile));
 
 var app = builder.Build();

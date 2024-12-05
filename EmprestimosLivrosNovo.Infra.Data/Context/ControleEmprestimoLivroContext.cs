@@ -120,7 +120,11 @@ public partial class ControleEmprestimoLivroContext : DbContext
 
         modelBuilder.Entity<Usuario>(entity =>
         {
+<<<<<<< HEAD
             entity.Property(e => e.Id).HasColumnName("id");
+=======
+            entity.Property(e => e.Id).ValueGeneratedNever();
+>>>>>>> dcda9d8e1ddfadb10d94a93e13fc0e9791649612
             entity.Property(e => e.Email)
                 .IsRequired()
                 .HasMaxLength(200);
