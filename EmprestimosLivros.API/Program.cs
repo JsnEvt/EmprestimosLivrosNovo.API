@@ -55,10 +55,12 @@ builder.Services.AddInfrastructureSwagger();
 
 builder.Services.AddScoped<IClienteService, ClienteService>();
 builder.Services.AddScoped<IUsuarioService, UsuarioService>();
+builder.Services.AddScoped<ILivroService, LivroService>();
 builder.Services.AddScoped<IAuthenticate, AuthenticateService>();
 
 builder.Services.AddScoped<IClienteRepository, ClienteRepository>();
 builder.Services.AddScoped<IUsuarioRepository, UsuarioRepository>();
+builder.Services.AddScoped<ILivroRepository, LivroRepository>();
 
 
 
