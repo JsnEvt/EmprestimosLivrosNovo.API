@@ -13,7 +13,22 @@ public partial class Usuario
 
     public string Email { get; private set; }
 
+    public bool IsAdmin { get; private set; }
+
     public byte[] PasswordHash { get; private set; }
 
     public byte[] PasswordSalt { get; private set; }
+
+
+    public void SetAdmin(bool isAdmin)
+    {
+        IsAdmin = isAdmin;
+    }
+
+
+    public void AlterarSenha(byte[] passwordHash, byte[] passwordSalt)
+    {
+        PasswordHash = passwordHash;
+        PasswordSalt = passwordSalt;
+    }
 }

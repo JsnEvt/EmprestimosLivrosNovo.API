@@ -46,12 +46,29 @@ namespace EmprestimosLivros.API.Controllers
                 Token = token,
             };
         }
+
+        [HttpPost("login")]
+        public async Task<ActionResult<UserToken>> Selecionar(LoginModel loginModel)
+        {
+            var existe = await _authenticateService.UserExists(loginModel.Email);
+            if (!existe)
+            {
+                return Unauthorized("Usuário não existe.");
+            }
+            var result = await _authenticateService.AuthenticateAsync(loginModel.Email, loginModel.Password);
+            if (!result)
+            {
+                return Unauthorized("Usuário ou senha inválidos.");
+            }
+            var usuario = await _authenticateService.GetUserByEmail(loginModel.Email);
+            var token = _authenticateService.GenerateToken(usuario.Id, usuario.Email);
+
+            return new UserToken
+            {
+                Token = token,
+            };
+
+        }
     }
 }
-//        [HttpPost("register")]
-//        public async Task<ActionResult<UserToken>> Incluir(UsuarioDTO usuarioDTO)
-//        {
-//            return View();
-//        }
-//    }
-//}
+

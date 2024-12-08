@@ -9,6 +9,10 @@ using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.Extensions.Configuration;
 using Microsoft.IdentityModel.Tokens;
 using System.Text;
+using EmprestimosLivrosNovo.Infra.Data.Repositories;
+using EmprestimosLivrosNovo.Domain.Account;
+using EmprestimosLivrosNovo.Infra.Data.Identity;
+using Microsoft.Extensions.DependencyInjection;
 
 
 var builder = WebApplication.CreateBuilder(args);
@@ -50,8 +54,12 @@ builder.Services.AddInfrastructureSwagger();
 //builder.Services.AddSwaggerGen();
 
 builder.Services.AddScoped<IClienteService, ClienteService>();
+builder.Services.AddScoped<IUsuarioService, UsuarioService>();
+builder.Services.AddScoped<IAuthenticate, AuthenticateService>();
 
 builder.Services.AddScoped<IClienteRepository, ClienteRepository>();
+builder.Services.AddScoped<IUsuarioRepository, UsuarioRepository>();
+
 
 
 builder.Services.AddAutoMapper(typeof(EntitiesToDTOMappingProfile));

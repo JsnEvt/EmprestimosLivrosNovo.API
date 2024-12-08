@@ -1,4 +1,5 @@
 ﻿using EmprestimosLivrosNovo.Domain.Account;
+using EmprestimosLivrosNovo.Domain.Entities;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.IdentityModel.Tokens;
@@ -64,6 +65,11 @@ namespace EmprestimosLivrosNovo.Infra.Data.Identity
                 );
 
             return new JwtSecurityTokenHandler().WriteToken(token);
+        }
+
+        public async Task<Usuario> GetUserByEmail(string email)
+        {
+            return await _context.Usuario.Where(x => x.Email.ToLower() == email.ToLower()).FirstOrDefaultAsync();
         }
 
         public async Task<bool> UserExists(string email)

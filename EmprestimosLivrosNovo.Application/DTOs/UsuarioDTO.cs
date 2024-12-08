@@ -4,6 +4,7 @@ using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Text;
+using System.Text.Json.Serialization;
 using System.Threading.Tasks;
 
 namespace EmprestimosLivrosNovo.Application.DTOs
@@ -22,5 +23,7 @@ namespace EmprestimosLivrosNovo.Application.DTOs
         [MinLength(8, ErrorMessage = "A senha deve ter, no mínimo, 8 caracteres")]
         [NotMapped]
         public string Password { get; set; }
+        [JsonIgnore] //para nao retornar esta informacao para o usuario
+        public bool IsAdmin { get; set; }
     }
 }
