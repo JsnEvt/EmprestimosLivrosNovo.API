@@ -22,4 +22,6 @@ public partial class Emprestimo
     public virtual Cliente IdClienteNavigation { get; set; }
 
     public virtual Livro IdLivroNavigation { get; set; }
+    public Cliente Cliente { get; set; }
+    public Livro Livro { get; set; }
 }

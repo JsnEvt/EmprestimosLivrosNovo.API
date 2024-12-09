@@ -26,8 +26,7 @@ namespace EmprestimosLivrosNovo.Infra.Data
             var cliente = await _context.Cliente.FindAsync(id);
             if (cliente != null)
             {
-                //cliente.Excluir();
-                _context.Cliente.Update(cliente);
+                _context.Cliente.Remove(cliente);
                 await _context.SaveChangesAsync();
                 return cliente;
             }
