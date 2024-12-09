@@ -9,7 +9,7 @@ namespace EmprestimosLivrosNovo.Application.DTOs
 {
     public class LivroDTO
     {
-        public int Id { get; set; }
+        public int LivroId { get; set; }
         [MaxLength(50, ErrorMessage ="O nome do livro deve ter até 50 caracteres.")]
         [Required(ErrorMessage ="O campo nome é obrigatório.")]
         public string Nome { get; set; }

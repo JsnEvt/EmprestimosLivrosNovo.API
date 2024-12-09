@@ -48,13 +48,14 @@ namespace EmprestimosLivrosNovo.Infra.Data.Repositories
 
         public async Task<Emprestimo> SelecionarAsync(int id)
         {
-            return await _context.Emprestimo.Where(x => x.id == id).FirstOrDefaultAsync();
+            //AsNoTracking - para nao rastrear a entidade e causar conflitos na hora das atualizacoes de informacoes:
+            return await _context.Emprestimo.Include(x => x.Cliente).Include(x => x.Livro).AsNoTracking().Where(x => x.id == id).FirstOrDefaultAsync();
         }
 
         public async Task<IEnumerable<Emprestimo>> SelecionarTodosAsync()
         {
-            return await _context.Emprestimo.Include(x => x.Cliente).Include(x => x.Livro).ToListAsync();
             //para retornar as informacoes complementares do livro/cliente:
+            return await _context.Emprestimo.Include(x => x.Cliente).Include(x => x.Livro).ToListAsync();
 
         }
     }

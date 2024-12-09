@@ -6,7 +6,7 @@ namespace EmprestimosLivrosNovo.Application.DTOs
 {
     public class ClienteDTO
     {
-        public int Id { get; set; }
+        public int ClienteId { get; set; }
 
         [Required]
         [StringLength(14)]
