@@ -8,9 +8,10 @@ namespace EmprestimosLivrosNovo.Application.DTOs
 {
     public class EmprestimoDTO
     {
-        public int? IdLivro { get; set; }
+        public int Id { get; set; }
+        public int? LivroId { get; set; }
 
-        public int? IdCliente { get; set; }
+        public int? ClienteId { get; set; }
 
         public DateTime? DataEmprestimo { get; set; }
 

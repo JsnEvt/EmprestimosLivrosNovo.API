@@ -12,12 +12,12 @@ namespace EmprestimosLivrosNovo.Application.Mappings
             CreateMap<Cliente, ClienteDTO>().ReverseMap();
             CreateMap<Usuario, UsuarioDTO>().ReverseMap();
             CreateMap<Livro, LivroDTO>().ReverseMap();
-            CreateMap<Emprestimo, EmprestimoDTO>().ReverseMap()
+            CreateMap<EmprestimoDTO, Emprestimo>().ReverseMap()
             //na classe Emprestimo tem dois atributos que precisam ser mapeados aqui:
             //Cliente -> ClienteDTO / Livros -> LivrosDTO:
-                .ForMember(dest => dest.Livro, opt => opt.MapFrom(x => x.LivroDTO))
-                .ForMember(dest => dest.Cliente, opt => opt.MapFrom(x => x.ClienteDTO));
-
+                .ForMember(dest => dest.LivroDTO, opt => opt.MapFrom(x => x.Livro))
+                .ForMember(dest => dest.ClienteDTO, opt => opt.MapFrom(x => x.Cliente));
+            CreateMap<Emprestimo, EmprestimoPOSTDTO>().ReverseMap();
 
         }
     }

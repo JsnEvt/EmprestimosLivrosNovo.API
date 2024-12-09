@@ -22,100 +22,74 @@ public partial class ControleEmprestimoLivroContext : DbContext
 
     public virtual DbSet<Usuario> Usuario { get; set; }
 
-    public virtual DbSet<VwEmprestimoNovo> VwEmprestimoNovo { get; set; }
+    public virtual DbSet<VW_EmprestimoNovo> VW_EmprestimoNovo { get; set; }
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
         modelBuilder.Entity<Cliente>(entity =>
         {
-            entity.Property(e => e.Id).HasColumnName("id");
-            entity.Property(e => e.Bairro)
-                .IsRequired()
-                .HasMaxLength(50)
-                .IsUnicode(false)
-                .HasColumnName("bairro");
-            entity.Property(e => e.Cidade)
-                .IsRequired()
-                .HasMaxLength(50)
-                .IsUnicode(false)
-                .HasColumnName("cidade");
-            entity.Property(e => e.Cpf)
+            entity.Property(e => e.CPF)
                 .IsRequired()
                 .HasMaxLength(14)
-                .IsUnicode(false)
-                .HasColumnName("CPF");
-            entity.Property(e => e.Endereco)
+                .IsUnicode(false);
+            entity.Property(e => e.bairro)
                 .IsRequired()
                 .HasMaxLength(50)
-                .IsUnicode(false)
-                .HasColumnName("endereco");
-            entity.Property(e => e.Nome)
+                .IsUnicode(false);
+            entity.Property(e => e.cidade)
+                .IsRequired()
+                .HasMaxLength(50)
+                .IsUnicode(false);
+            entity.Property(e => e.endereco)
+                .IsRequired()
+                .HasMaxLength(50)
+                .IsUnicode(false);
+            entity.Property(e => e.nome)
                 .IsRequired()
                 .HasMaxLength(100)
-                .IsUnicode(false)
-                .HasColumnName("nome");
-            entity.Property(e => e.Numero)
+                .IsUnicode(false);
+            entity.Property(e => e.numero)
                 .IsRequired()
-                .HasMaxLength(3)
-                .HasColumnName("numero");
-            entity.Property(e => e.TelefoneCelular)
-                .HasMaxLength(14)
-                .HasColumnName("telefoneCelular");
-            entity.Property(e => e.TelefoneFixo)
-                .HasMaxLength(14)
-                .HasColumnName("telefoneFixo");
+                .HasMaxLength(3);
+            entity.Property(e => e.telefoneCelular).HasMaxLength(14);
+            entity.Property(e => e.telefoneFixo).HasMaxLength(14);
         });
 
         modelBuilder.Entity<Emprestimo>(entity =>
         {
-            entity.Property(e => e.Id)
-                .ValueGeneratedNever()
-                .HasColumnName("id");
-            entity.Property(e => e.DataEmprestimo)
-                .HasColumnType("datetime")
-                .HasColumnName("dataEmprestimo");
-            entity.Property(e => e.DataEntrega)
-                .HasColumnType("datetime")
-                .HasColumnName("dataEntrega");
-            entity.Property(e => e.Entregue).HasColumnName("entregue");
-            entity.Property(e => e.IdCliente).HasColumnName("idCliente");
-            entity.Property(e => e.IdLivro).HasColumnName("idLivro");
+            entity.Property(e => e.dataEmprestimo).HasColumnType("datetime");
+            entity.Property(e => e.dataEntrega).HasColumnType("datetime");
 
-            entity.HasOne(d => d.IdClienteNavigation).WithMany(p => p.Emprestimo)
-                .HasForeignKey(d => d.IdCliente)
+            entity.HasOne(d => d.Cliente).WithMany(p => p.Emprestimo)
+                .HasForeignKey(d => d.ClienteId)
+                .OnDelete(DeleteBehavior.ClientSetNull)
                 .HasConstraintName("FK_Emprestimo_Cliente");
 
-            entity.HasOne(d => d.IdLivroNavigation).WithMany(p => p.Emprestimo)
-                .HasForeignKey(d => d.IdLivro)
+            entity.HasOne(d => d.Livro).WithMany(p => p.Emprestimo)
+                .HasForeignKey(d => d.LivroId)
+                .OnDelete(DeleteBehavior.ClientSetNull)
                 .HasConstraintName("FK_Emprestimo_Livro");
         });
 
         modelBuilder.Entity<Livro>(entity =>
         {
-            entity.Property(e => e.Id).HasColumnName("id");
-            entity.Property(e => e.AnoPublicacao)
-                .HasColumnType("datetime")
-                .HasColumnName("anoPublicacao");
-            entity.Property(e => e.Autor)
+            entity.Property(e => e.anoPublicacao).HasColumnType("datetime");
+            entity.Property(e => e.autor)
                 .IsRequired()
                 .HasMaxLength(200)
-                .IsUnicode(false)
-                .HasColumnName("autor");
-            entity.Property(e => e.Edicao)
+                .IsUnicode(false);
+            entity.Property(e => e.edicao)
                 .IsRequired()
                 .HasMaxLength(50)
-                .IsUnicode(false)
-                .HasColumnName("edicao");
-            entity.Property(e => e.Editora)
+                .IsUnicode(false);
+            entity.Property(e => e.editora)
                 .IsRequired()
                 .HasMaxLength(100)
-                .IsUnicode(false)
-                .HasColumnName("editora");
-            entity.Property(e => e.Nome)
+                .IsUnicode(false);
+            entity.Property(e => e.nome)
                 .IsRequired()
                 .HasMaxLength(50)
-                .IsFixedLength()
-                .HasColumnName("nome");
+                .IsFixedLength();
         });
 
         modelBuilder.Entity<Usuario>(entity =>
@@ -128,36 +102,26 @@ public partial class ControleEmprestimoLivroContext : DbContext
                 .HasMaxLength(250);
         });
 
-        modelBuilder.Entity<VwEmprestimoNovo>(entity =>
+        modelBuilder.Entity<VW_EmprestimoNovo>(entity =>
         {
             entity
                 .HasNoKey()
                 .ToView("VW_EmprestimoNovo");
 
-            entity.Property(e => e.Cpf)
+            entity.Property(e => e.CPF)
                 .IsRequired()
                 .HasMaxLength(14)
-                .IsUnicode(false)
-                .HasColumnName("CPF");
-            entity.Property(e => e.DataEmprestimo)
-                .HasColumnType("datetime")
-                .HasColumnName("dataEmprestimo");
-            entity.Property(e => e.DataEntrega)
-                .HasColumnType("datetime")
-                .HasColumnName("dataEntrega");
-            entity.Property(e => e.Eidcliente).HasColumnName("EIDCliente");
-            entity.Property(e => e.Eidlivro).HasColumnName("EIDLivro");
-            entity.Property(e => e.Entregue).HasColumnName("entregue");
-            entity.Property(e => e.NomeCliente)
+                .IsUnicode(false);
+            entity.Property(e => e.dataEmprestimo).HasColumnType("datetime");
+            entity.Property(e => e.dataEntrega).HasColumnType("datetime");
+            entity.Property(e => e.nomeCliente)
                 .IsRequired()
                 .HasMaxLength(100)
-                .IsUnicode(false)
-                .HasColumnName("nomeCliente");
-            entity.Property(e => e.NomeLivro)
+                .IsUnicode(false);
+            entity.Property(e => e.nomeLivro)
                 .IsRequired()
                 .HasMaxLength(50)
-                .IsFixedLength()
-                .HasColumnName("nomeLivro");
+                .IsFixedLength();
         });
 
         OnModelCreatingPartial(modelBuilder);

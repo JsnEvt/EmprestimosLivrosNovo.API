@@ -7,23 +7,23 @@ namespace EmprestimosLivrosNovo.Domain.Entities;
 
 public partial class Cliente
 {
-    public int Id { get; set; }
+    public int ClienteId { get; set; }
 
-    public string Cpf { get; set; }
+    public string CPF { get; set; }
 
-    public string Nome { get; set; }
+    public string nome { get; set; }
 
-    public string Endereco { get; set; }
+    public string endereco { get; set; }
 
-    public string Cidade { get; set; }
+    public string cidade { get; set; }
 
-    public string Bairro { get; set; }
+    public string bairro { get; set; }
 
-    public string Numero { get; set; }
+    public string numero { get; set; }
 
-    public string TelefoneCelular { get; set; }
+    public string telefoneCelular { get; set; }
 
-    public string TelefoneFixo { get; set; }
+    public string telefoneFixo { get; set; }
 
     public virtual ICollection<Emprestimo> Emprestimo { get; set; } = new List<Emprestimo>();
 }

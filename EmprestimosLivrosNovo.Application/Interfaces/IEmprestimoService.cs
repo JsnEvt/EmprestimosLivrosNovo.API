@@ -10,7 +10,7 @@ namespace EmprestimosLivrosNovo.Application.Interfaces
 {
     public interface IEmprestimoService
     {
-        Task<EmprestimoDTO> Incluir(EmprestimoDTO emprestimoDTO);
+        Task<EmprestimoDTO> Incluir(EmprestimoPOSTDTO emprestimoPOSTDTO);
         Task<EmprestimoDTO> Alterar(EmprestimoDTO emprestimoDTO);
         Task<EmprestimoDTO> Excluir(int id);
         Task<EmprestimoDTO> SelecionarAsync(int id);

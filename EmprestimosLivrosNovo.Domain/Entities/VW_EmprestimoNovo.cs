@@ -5,21 +5,23 @@ using System.Collections.Generic;
 
 namespace EmprestimosLivrosNovo.Domain.Entities;
 
-public partial class Emprestimo
+public partial class VW_EmprestimoNovo
 {
-    public int id { get; set; }
+    public long? IdEmprestimo { get; set; }
 
-    public int ClienteId { get; set; }
+    public string CPF { get; set; }
 
-    public int LivroId { get; set; }
+    public string nomeCliente { get; set; }
+
+    public string nomeLivro { get; set; }
+
+    public int? EIDLivro { get; set; }
+
+    public int? EIDCliente { get; set; }
 
     public DateTime? dataEmprestimo { get; set; }
 
     public DateTime? dataEntrega { get; set; }
 
     public bool? entregue { get; set; }
-
-    public virtual Cliente Cliente { get; set; }
-
-    public virtual Livro Livro { get; set; }
 }

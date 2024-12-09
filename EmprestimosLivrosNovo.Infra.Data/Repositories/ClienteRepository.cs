@@ -43,7 +43,7 @@ namespace EmprestimosLivrosNovo.Infra.Data
 
         public async Task<Cliente> SelecionarAsync(int id)
         {
-            return await _context.Cliente.Where(x => x.Id == id).FirstOrDefaultAsync();
+            return await _context.Cliente.Where(x => x.ClienteId == id).FirstOrDefaultAsync();
         }
 
         public async Task<IEnumerable<Cliente>> SelecionarTodosAsync()

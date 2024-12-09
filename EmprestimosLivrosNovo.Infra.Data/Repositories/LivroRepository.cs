@@ -49,7 +49,7 @@ namespace EmprestimosLivrosNovo.Infra.Data.Repositories
 
         public async Task<Livro> SelecionarAsync(int id)
         {
-            return await _context.Livro.Where(x => x.Id == id).FirstOrDefaultAsync();
+            return await _context.Livro.Where(x => x.LivroId == id).FirstOrDefaultAsync();
         }
 
         public async Task<IEnumerable<Livro>> SelecionarTodosAsync()
