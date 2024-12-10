@@ -14,5 +14,6 @@ namespace EmprestimosLivrosNovo.Domain.Interfaces
         Task<Usuario> Excluir(int id);
         Task<Usuario> SelecionarAsync(int id);
         Task<IEnumerable<Usuario>> SelecionarTodosAsync();
+        Task<bool> ExisteUsuarioCadastradoAsync();
     }
 }

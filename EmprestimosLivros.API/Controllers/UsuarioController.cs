@@ -2,7 +2,7 @@
 using EmprestimosLivrosNovo.Application.DTOs;
 using EmprestimosLivrosNovo.Application.Interfaces;
 using EmprestimosLivrosNovo.Domain.Account;
-
+using EmprestimosLivrosNovo.Infra.Ioc;
 using Microsoft.AspNetCore.Mvc;
 
 namespace EmprestimosLivros.API.Controllers
@@ -34,18 +34,37 @@ namespace EmprestimosLivros.API.Controllers
                 return BadRequest("Este e-mail já possui cadastro.");
             }
 
-            var usuario = await _usuarioService.Incluir(usuarioDTO);
-            if (usuario == null)
+            var existeUsuarioSistema = await _usuarioService.ExisteUsuarioCadastradoAsync();
+            if (!existeUsuarioSistema)
             {
-                return BadRequest("Ocorreu um erro ao cadastrar.");
+                usuarioDTO.IsAdmin = true;
+            }
+            else
+            {
+                if (User.FindFirst("id") == null) //o id e uma informacao vital para geracao da autenticacao (Claim)
+                {
+                    return Unauthorized();
+                }
+                var userId = User.GetId();
+                var user = await _usuarioService.SelecionarAsync(userId);
+                if (!user.IsAdmin)
+                {
+                    return Unauthorized("Você não tem permissão para incluir novos usuários.");
+                }
             }
 
-            var token = _authenticateService.GenerateToken(usuario.Id, usuario.Email);
-            return new UserToken
-            {
-                Token = token,
-            };
-        }
+                var usuario = await _usuarioService.Incluir(usuarioDTO);
+                if (usuario == null)
+                {
+                    return BadRequest("Ocorreu um erro ao cadastrar.");
+                }
+
+                var token = _authenticateService.GenerateToken(usuario.Id, usuario.Email);
+                return new UserToken
+                {
+                    Token = token,
+                };
+            }
 
         [HttpPost("login")]
         public async Task<ActionResult<UserToken>> Selecionar(LoginModel loginModel)

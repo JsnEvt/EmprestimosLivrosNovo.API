@@ -1,12 +1,14 @@
 ﻿using EmprestimosLivrosNovo.Application.DTOs;
 using EmprestimosLivrosNovo.Application.Interfaces;
 using EmprestimosLivrosNovo.Infra.Ioc;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace EmprestimosLivros.API.Controllers
 {
     [ApiController]
     [Route("api/[controller]")]
+    [Authorize]
     public class LivroController : Controller
     {
 

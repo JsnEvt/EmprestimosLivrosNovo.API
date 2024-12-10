@@ -12,11 +12,11 @@ namespace EmprestimosLivrosNovo.Application.DTOs
     {
         [Required(ErrorMessage = "O cliente é obrigatório")]
         [Range(1, int.MaxValue, ErrorMessage = "O identificador do cliente é inválido.")]
-        public int? ClienteId { get; set; }
+        public int ClienteId { get; set; }
 
         [Required(ErrorMessage = "O livro é obrigatório")]
         [Range(1, int.MaxValue, ErrorMessage = "O identificador do livro é inválido.")]
-        public int? LivroId { get; set; }
+        public int LivroId { get; set; }
         [Required(ErrorMessage = "A data de entrega é obrigatória")]
         public DateTime DataEntrega { get; set; }
 
