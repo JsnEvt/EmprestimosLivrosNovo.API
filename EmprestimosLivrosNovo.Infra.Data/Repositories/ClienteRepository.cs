@@ -1,5 +1,7 @@
 ﻿using EmprestimosLivrosNovo.Domain.Entities;
 using EmprestimosLivrosNovo.Domain.Interfaces;
+using EmprestimosLivrosNovo.Domain.Pagination;
+using EmprestimosLivrosNovo.Infra.Data.Helper;
 using Microsoft.EntityFrameworkCore;
 
 namespace EmprestimosLivrosNovo.Infra.Data
@@ -46,9 +48,10 @@ namespace EmprestimosLivrosNovo.Infra.Data
             return await _context.Cliente.Where(x => x.ClienteId == id).FirstOrDefaultAsync();
         }
 
-        public async Task<IEnumerable<Cliente>> SelecionarTodosAsync()
+        public async Task<PagedList<Cliente>> SelecionarTodosAsync(int pageNumber, int pageSize)
         {
-            return await _context.Cliente.ToListAsync();
+            var query = _context.Cliente.AsQueryable();
+            return await PaginationHelper.CreateAsync(query, pageNumber, pageSize);
         }
     }
 }
