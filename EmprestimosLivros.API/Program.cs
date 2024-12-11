@@ -13,6 +13,7 @@ using EmprestimosLivrosNovo.Infra.Data.Repositories;
 using EmprestimosLivrosNovo.Domain.Account;
 using EmprestimosLivrosNovo.Infra.Data.Identity;
 using Microsoft.Extensions.DependencyInjection;
+using EmprestimosLivros.API.Middleware;
 
 
 var builder = WebApplication.CreateBuilder(args);
@@ -76,6 +77,8 @@ if (app.Environment.IsDevelopment())
     app.UseSwagger();
     app.UseSwaggerUI();
 }
+
+app.UseMiddleware<ExceptionMiddleware>();
 
 app.UseHttpsRedirection();
 
