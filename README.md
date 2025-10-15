@@ -6,7 +6,6 @@
 ![EF Core](https://img.shields.io/badge/Entity%20Framework-Core-5C2D91?logo=entity-framework&logoColor=white)
 ![License](https://img.shields.io/badge/License-MIT-yellow)
 ![Architecture](https://img.shields.io/badge/Architecture-RESTful%20API-orange)
-![Status](https://img.shields.io/badge/Status-Em%20Desenvolvimento-informational)
 
 ---
 
